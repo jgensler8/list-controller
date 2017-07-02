@@ -1,0 +1,109 @@
+apiVersion: "cr.client-go.k8s.io/v1"
+kind: ManagedList
+metadata:
+  name: my-example-list
+spec:
+  # A tad confusing as "List" is really an array of v1.Lists...
+  #
+  # type ManagedListSpec struct {
+  #	  List []v1.List `json:"List"`
+  # }
+  List:
+    - apiVersion: v1
+      items:
+      - apiVersion: v1
+        kind: Node
+        metadata:
+          annotations:
+            alpha.kubernetes.io/provided-node-ip: 192.168.99.100
+            node.alpha.kubernetes.io/ttl: "0"
+            volumes.kubernetes.io/controller-managed-attach-detach: "true"
+          creationTimestamp: 2017-07-01T20:56:14Z
+          labels:
+            beta.kubernetes.io/arch: amd64
+            beta.kubernetes.io/os: linux
+            kubernetes.io/hostname: minikube
+          name: minikube
+          namespace: ""
+          resourceVersion: "5616"
+          selfLink: /api/v1/nodes/minikube
+          uid: b8904b76-5e9f-11e7-90e5-08002774abd5
+        spec:
+          externalID: minikube
+        status:
+          addresses:
+          - address: 192.168.99.100
+            type: InternalIP
+          - address: minikube
+            type: Hostname
+          allocatable:
+            cpu: "2"
+            memory: 1946044Ki
+            pods: "110"
+          capacity:
+            cpu: "2"
+            memory: 2048444Ki
+            pods: "110"
+          conditions:
+          - lastHeartbeatTime: 2017-07-01T22:18:49Z
+            lastTransitionTime: 2017-07-01T20:56:14Z
+            message: kubelet has sufficient disk space available
+            reason: KubeletHasSufficientDisk
+            status: "False"
+            type: OutOfDisk
+          - lastHeartbeatTime: 2017-07-01T22:18:49Z
+            lastTransitionTime: 2017-07-01T20:56:14Z
+            message: kubelet has sufficient memory available
+            reason: KubeletHasSufficientMemory
+            status: "False"
+            type: MemoryPressure
+          - lastHeartbeatTime: 2017-07-01T22:18:49Z
+            lastTransitionTime: 2017-07-01T20:56:14Z
+            message: kubelet has no disk pressure
+            reason: KubeletHasNoDiskPressure
+            status: "False"
+            type: DiskPressure
+          - lastHeartbeatTime: 2017-07-01T22:18:49Z
+            lastTransitionTime: 2017-07-01T20:56:24Z
+            message: kubelet is posting ready status
+            reason: KubeletReady
+            status: "True"
+            type: Ready
+          daemonEndpoints:
+            kubeletEndpoint:
+              Port: 10250
+          images:
+          - names:
+            - gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.1
+            sizeBytes: 134353887
+          - names:
+            - gcr.io/google-containers/kube-addon-manager:v6.4-beta.1
+            sizeBytes: 127217136
+          - names:
+            - gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.2
+            sizeBytes: 52356750
+          - names:
+            - gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.2
+            sizeBytes: 44844722
+          - names:
+            - gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.2
+            sizeBytes: 44503071
+          - names:
+            - gcr.io/google_containers/pause-amd64:3.0
+            sizeBytes: 746888
+          nodeInfo:
+            architecture: amd64
+            bootID: 8a37c7bc-aa73-4838-bc17-b67ba39e50e6
+            containerRuntimeVersion: docker://1.11.1
+            kernelVersion: 4.9.13
+            kubeProxyVersion: v1.7.0
+            kubeletVersion: v1.7.0
+            machineID: b1df205d29ed4851aca54e87bc52f680
+            operatingSystem: linux
+            osImage: Buildroot 2017.02
+            systemUUID: 8D3E0469-E475-4002-A4D5-A45F10FDA730
+      kind: List
+      metadata: {}
+      resourceVersion: ""
+      selfLink: ""
+
